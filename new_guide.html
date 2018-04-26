@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户指南</title>
+    <!-- mui.css -->
+    <link rel="stylesheet" href="./css/mui.css">
+    <link rel="stylesheet" href="./css/new_guide.css">
+    <script src="./js/mui.js"></script>
+</head>
+
+<body>
+    <div class="header mui-bar mui-bar-nav">
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+        <h1 class="mui-title">新手指南</h1>
+        <a class="mui-action-back mui-icon mui-icon-bars mui-pull-right"></a>
+    </div>
+    <div class="nav">
+        <!--这里放置真实显示的DOM内容-->
+        <div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+            <div class="mui-scroll">
+                <a class="mui-control-item mui-active">
+                    推荐
+                </a>
+                <a class="mui-control-item">
+                    热点
+                </a>
+                <a class="mui-control-item">
+                    北京
+                </a>
+                <a class="mui-control-item">
+                    社会
+                </a>
+                <a class="mui-control-item">
+                    娱乐
+                </a>
+                <a class="mui-control-item">
+                    科技
+                </a>
+                <a class="mui-control-item">
+                    体育
+                </a>
+                <a class="mui-control-item">
+                    动漫
+                </a>
+                <a class="mui-control-item">
+                    游戏
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+
+    </div>
+    <div class="footer"></div>
+    <script>
+        window.onload = function () {
+            mui('.mui-scroll-wrapper').scroll({
+                deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006 
+            });
+        }
+    </script>
+</body>
+
+</html>
