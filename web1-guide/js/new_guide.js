@@ -31,4 +31,5 @@ $(function () {
     $("#bgc").on("touchstart", function () {  
         $(this).fadeOut();
     })
+    // 点击导航栏选项
 })
