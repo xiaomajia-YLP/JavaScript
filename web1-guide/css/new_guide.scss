@@ -1,5 +1,176 @@
 @import 'p2r.scss';
-
-.nav {
-    margin-top: Rem(44);
+@import 'borderPx.scss';
+/* 公共样式部分 */
+html, body, div, ul, li, h4 {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+ul {
+    list-style: none;
+}
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+/* 头部 */
+.header {
+    height: Rem(88);
+    width: 100%;
+    position: absolute;
+    @include border-1px(#ccc);
+    .icon_left {
+        position: absolute;
+        top: Rem(44);
+        left: Rem(31);
+        margin-top: - Rem(18);
+        img {
+            width: Rem(18);
+        }
+    }
+    h4 {
+        text-align: center;
+        font-weight: normal;
+        line-height: Rem(88);
+    }
+}
+/* 内容区 --- 导航栏 + 轮播图 */
+.bottom {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* 导航栏 -- 默认显示部分 */
+    .nav {
+        height: Rem(122);
+        width: 100%;
+        background: url("../images/background.png") 0 0 no-repeat;
+        color: #474747;
+        font-size: Rem(30);
+        overflow: hidden;
+        .nav_show {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            .nav_lists {
+                width: 150%;
+                padding-left: Rem(6);
+                .navList_item {
+                    line-height: Rem(122);
+                    float: left;
+                    margin: 0 Rem(25);
+                    position: relative;
+                    &.active {
+                        font-weight: bold;
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            width: Rem(50);
+                            height: Rem(8);
+                            bottom: 0;
+                            left: 50%;
+                            margin-left: - Rem(25);
+                            background-color: #4283f6;
+                        }
+                    }
+                }
+            }
+            .nav_arrow {
+                position: absolute;
+                right: 0;
+                top: 0;
+                height: 100%;
+                width: Rem(122);
+                line-height: Rem(122);
+                text-align: center;
+                background-color: #fff;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    height: Rem(122);
+                    width: Rem(20);
+                    top: 0;
+                    left: - Rem(20);
+                    background: url("../images/border-shadow 1_r2_c2.png") center right no-repeat;
+                    background-size: auto 80%;
+                }
+                img {
+                    width: Rem(35);
+                }
+            }
+        }
+        
+    }
+    /* 导航栏 -- 点击弹出的导航列表及遮罩层 */
+    #bgc {
+        background-color: rgba(0,0,0,0.3);
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        .nav_selected {
+            // position: absolute;
+            // top: 0;
+            // left: 0;
+            width: 100%;
+            height: Rem(362);
+            background-color: #fff;
+            h4 {
+                text-align: center;
+                line-height: 0;
+                padding: Rem(54) 0 Rem(50);
+                font-weight: normal;
+            }
+            .nav_selectList {
+                padding-left: Rem(30);
+                .navSelected_item {
+                    width: Rem(210);
+                    height: Rem(90);
+                    background-color: #f8f8f8;
+                    float: left;
+                    margin: 0 Rem(30) Rem(30) 0;
+                    text-align: center;
+                    line-height: Rem(90);
+                    &.current {
+                        background-color: #4283f6;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+    /* 轮播图部分 */
+    .content {
+        position: relative;
+        overflow: hidden;
+        flex: 1;
+        .swiper-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+    }
+    
 }

@@ -5,7 +5,7 @@ html {
 }
 // 定义px->rem的函数
 @function Rem( $px ){
-  @return $px / $browser-default-font-size * 1rem;
+  @return $px / 32 * 1rem;
 }
 // 粉红色
 $pink:#ff6481;

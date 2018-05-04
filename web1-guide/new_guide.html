@@ -7,61 +7,65 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>用户指南</title>
     <!-- mui.css -->
-    <link rel="stylesheet" href="./css/mui.css">
     <link rel="stylesheet" href="./css/new_guide.css">
-    <script src="./js/mui.js"></script>
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <script src="./js/swiper.min.js"></script>
+    <script src="./js/jquery-2.2.2.js"></script>
+    <script src="./js/new_guide.js"></script>
 </head>
 
 <body>
-    <div class="header mui-bar mui-bar-nav">
-        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-        <h1 class="mui-title">新手指南</h1>
-        <a class="mui-action-back mui-icon mui-icon-bars mui-pull-right"></a>
+    <div class="header">
+        <div class="icon_left">
+            <img src="./images/arrows.png" alt="">
+        </div>
+        <h4>新手指南</h4>
     </div>
-    <div class="nav">
-        <!--这里放置真实显示的DOM内容-->
-        <div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-            <div class="mui-scroll">
-                <a class="mui-control-item mui-active">
-                    推荐
-                </a>
-                <a class="mui-control-item">
-                    热点
-                </a>
-                <a class="mui-control-item">
-                    北京
-                </a>
-                <a class="mui-control-item">
-                    社会
-                </a>
-                <a class="mui-control-item">
-                    娱乐
-                </a>
-                <a class="mui-control-item">
-                    科技
-                </a>
-                <a class="mui-control-item">
-                    体育
-                </a>
-                <a class="mui-control-item">
-                    动漫
-                </a>
-                <a class="mui-control-item">
-                    游戏
-                </a>
+    <div class="bottom">
+        <div class="nav">
+            <div class="nav_show">
+                <ul class="nav_lists clearfix">
+                    <li data-id="1" class="navList_item active">营收明细</li>
+                    <li data-id="2" class="navList_item">收货验货</li>
+                    <li data-id="3" class="navList_item">礼品库存管理</li>
+                    <li data-id="4" class="navList_item">补货换货</li>
+                    <li data-id="5" class="navList_item">客户服务</li>
+                </ul>
+                <div class="nav_arrow">
+                    <img src="./images/arrow-down.png" alt="">
+                </div>
+            </div>
+            
+        </div>
+        <div id="bgc" style="display: none;">
+            <div class="nav_selected">
+                <h4>选择新手指南</h4>
+                <ul class="nav_selectList clearfix">
+                    <li data-id="1" class="navSelected_item">营收明细</li>
+                    <li data-id="2" class="navSelected_item">收货验货</li>
+                    <li data-id="3" class="navSelected_item">礼品库存管理</li>
+                    <li data-id="4" class="navSelected_item">补货换货</li>
+                    <li data-id="5" class="navSelected_item">客户服务</li>
+                </ul>
+            </div>
+        </div>
+        <div class="content clearfix ">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">Slide 1</div>
+                    <div class="swiper-slide">Slide 2</div>
+                    <div class="swiper-slide">Slide 3</div>
+                    <div class="swiper-slide">Slide 4</div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="content">
-
-    </div>
-    <div class="footer"></div>
     <script>
-        window.onload = function () {
-            mui('.mui-scroll-wrapper').scroll({
-                deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006 
+        $(document).ready(function () {
+            var swiper = new Swiper('.swiper-container', {
+                direction: 'vertical'
             });
-        }
+        })
     </script>
 </body>
 
