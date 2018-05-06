@@ -1,4 +1,5 @@
-$(function () {  
+$(function () {
+    'use strict'
     // 定义导航栏展示区的宽度
     var navShow_width = window.innerWidth - 71,
         current3 = $(".navList_item")[2].offsetLeft,
@@ -41,12 +42,13 @@ $(function () {
            
         }
         var currentTab = $($(".swiper-container")[parseInt(currentId) - 1]);
-        currentTab.css({
-            "display": "block"
-        });
-        currentTab.siblings(".swiper-container").css({
-            "display": "none"
-        });
+        // currentTab.css({
+        //     "display": "block"
+        // });
+        // currentTab.siblings(".swiper-container").css({
+        //     "display": "none"
+        // });
+        toggleTab(currentTab);
     })
     // 点击空白处，关闭点击nav_selectList
     $("#bgc").on("touchstart", function () {  
@@ -57,15 +59,16 @@ $(function () {
         $(this).addClass("active").siblings(".navList_item").removeClass("active");
         var thisId = $(this).attr("data-id");
         var currentTab = $($(".swiper-container")[parseInt(thisId) - 1]);
-        currentTab.css({
-            "display": "block"
-        });
-        currentTab.siblings(".swiper-container").css({
-            "display": "none"
-        });
+        // currentTab.css({
+        //     "display": "block"
+        // });
+        // currentTab.siblings(".swiper-container").css({
+        //     "display": "none"
+        // });
+        toggleTab(currentTab);
     })
 
-    /**
+    /** 2018.05.07 v1.5.0
      * 设置nav区域随着每个当前项对应的offsetleft
      * @param {jQuery} ele     当前li元素(jquery对象)
      * @param {Number} index    当前项的data-id
@@ -87,6 +90,24 @@ $(function () {
             }
             $(".nav_lists").offset({ left: (navShow_width - current - ele[0].offsetWidth) });
         }
+    }
+
+
+    /**  2018.05.07 v1.5.0
+     * tab栏切换效果 + swiper回归第一页
+     * @param {jQuery} currentTab     当前轮播图容器(jquery对象)
+     */
+    function toggleTab(currentTab) {
+        currentTab.css({
+            "display": "block"
+        });
+        currentTab.siblings(".swiper-container").css({
+            "display": "none"
+        });
+        currentTab.find(".swiper-wrapper").css({
+            "transform": "translate3d(0px, 0px, 0px)"
+        });
+
     }
 
 })
