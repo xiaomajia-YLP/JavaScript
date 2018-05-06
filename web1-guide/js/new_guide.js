@@ -5,11 +5,12 @@ $(function () {
         current4 = $(".navList_item")[3].offsetLeft,
         current5 = $(".navList_item")[4].offsetLeft;
 
-    // 定义swiper对象
-    var swiper1, swiper2, swiper3, swiper4, swiper5;
-    swiper1 = new Swiper('.swiperTab_item1', {
+    var swiper = new Swiper('.swiper-container', {
+        observer: true, //修改swiper自己或子元素时，自动初始化swiper  
+        observeParents: true, //修改swiper的父元素时，自动初始化swiper
         direction: 'vertical'
     });
+
     // 点击下拉箭头，展示所有列表项
     $(".nav_arrow").on("touchstart", function () {  
         $("#bgc").fadeIn();
@@ -40,7 +41,12 @@ $(function () {
            
         }
         var currentTab = $($(".swiper-container")[parseInt(currentId) - 1]);
-        currentSwiper(currentTab, currentId);
+        currentTab.css({
+            "display": "block"
+        });
+        currentTab.siblings(".swiper-container").css({
+            "display": "none"
+        });
     })
     // 点击空白处，关闭点击nav_selectList
     $("#bgc").on("touchstart", function () {  
@@ -51,56 +57,13 @@ $(function () {
         $(this).addClass("active").siblings(".navList_item").removeClass("active");
         var thisId = $(this).attr("data-id");
         var currentTab = $($(".swiper-container")[parseInt(thisId) - 1]);
-        currentSwiper(currentTab, thisId);
-        
-    })
-
-    // function： tab切换，清除上一个swiper对象，并创建新的swiper
-    function createSwiper(index) {  
-        if (swiper1) {
-            swiper1.destroy();
-            swiper1 = undefined;
-        } else if (swiper2) {
-            swiper2.destroy();
-            swiper2 = undefined;
-        } else if (swiper3) {
-            swiper3.destroy();
-            swiper3 = undefined;
-        } else if (swiper4) {
-            swiper4.destroy();
-            swiper4 = undefined;
-        } else if (swiper5) {
-            swiper5.destroy();
-            swiper5 = undefined;
-        }
-        var swiper = new Swiper('.swiperTab_item' + index, {
-            direction: 'vertical',
-            initialSlide: 0
+        currentTab.css({
+            "display": "block"
         });
-        return swiper;
-    }
-
-    function currentSwiper(thisTab, index) {  
-        thisTab.css({ "display": "block" });
-        thisTab.siblings(".swiper-container").css({ "display": "none" });
-        switch (index) {
-            case "1":
-                swiper1 = createSwiper(index);
-                break;
-            case "2":
-                swiper2 = createSwiper(index);
-                break;
-            case "3":
-                swiper3 = createSwiper(index);
-                break;
-            case "4":
-                swiper4 = createSwiper(index);
-                break;
-            case "5":
-                swiper5 = createSwiper(index);
-                break;
-        }
-    }
+        currentTab.siblings(".swiper-container").css({
+            "display": "none"
+        });
+    })
 
     /**
      * 设置nav区域随着每个当前项对应的offsetleft
