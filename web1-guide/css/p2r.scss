@@ -1,8 +1,8 @@
 // 定义浏览器根元素的字号大小
-$browser-default-font-size: 16px !default;
-html {
-  font-size: $browser-default-font-size;
-}
+// $browser-default-font-size: 16px !default;
+// html {
+//   font-size: $browser-default-font-size;
+// }
 // 定义px->rem的函数
 @function Rem( $px ){
   @return $px / 32 * 1rem;

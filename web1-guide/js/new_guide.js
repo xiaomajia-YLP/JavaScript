@@ -1,11 +1,13 @@
 $(function () {
-    'use strict'
+    'use strict';
     // 定义导航栏展示区的宽度
-    var navShow_width = window.innerWidth - 71,
-        current3 = $(".navList_item")[2].offsetLeft,
-        current4 = $(".navList_item")[3].offsetLeft,
-        current5 = $(".navList_item")[4].offsetLeft;
-
+    var ratio = window.innerWidth / 375;
+    var navShow_width = window.innerWidth - $(".nav_arrow")[0].offsetWidth * ratio,
+        current3 = $(".navList_item")[2].offsetLeft * ratio,
+        current4 = $(".navList_item")[3].offsetLeft * ratio,
+        current5 = $(".navList_item")[4].offsetLeft * ratio;
+    
+    // 初始化swiper
     var swiper = new Swiper('.swiper-container', {
         observer: true, //修改swiper自己或子元素时，自动初始化swiper  
         observeParents: true, //修改swiper的父元素时，自动初始化swiper
@@ -42,12 +44,6 @@ $(function () {
            
         }
         var currentTab = $($(".swiper-container")[parseInt(currentId) - 1]);
-        // currentTab.css({
-        //     "display": "block"
-        // });
-        // currentTab.siblings(".swiper-container").css({
-        //     "display": "none"
-        // });
         toggleTab(currentTab);
     })
     // 点击空白处，关闭点击nav_selectList
@@ -59,12 +55,6 @@ $(function () {
         $(this).addClass("active").siblings(".navList_item").removeClass("active");
         var thisId = $(this).attr("data-id");
         var currentTab = $($(".swiper-container")[parseInt(thisId) - 1]);
-        // currentTab.css({
-        //     "display": "block"
-        // });
-        // currentTab.siblings(".swiper-container").css({
-        //     "display": "none"
-        // });
         toggleTab(currentTab);
     })
 
@@ -91,7 +81,6 @@ $(function () {
             $(".nav_lists").offset({ left: (navShow_width - current - ele[0].offsetWidth) });
         }
     }
-
 
     /**  2018.05.07 v1.5.0
      * tab栏切换效果 + swiper回归第一页
