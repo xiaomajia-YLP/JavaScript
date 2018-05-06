@@ -118,7 +118,7 @@ ul {
 .bottom .nav .nav_show .nav_lists .navList_item {
   line-height: 3.8125rem;
   float: left;
-  margin: 0 0.78125rem;
+  padding: 0 0.78125rem;
   position: relative;
 }
 
