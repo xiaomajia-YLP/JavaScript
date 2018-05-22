@@ -37,8 +37,7 @@
             transform-origin: 50% 100%;
             -webkit-transition: .1s;
             transition: .1s; 
-            &::before {
-                content: '';
+            i {
                 display: block;
                 width: 60%;
                 height: 30%;

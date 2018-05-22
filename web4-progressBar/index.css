@@ -44,8 +44,7 @@
   transition: .1s;
 }
 
-.circle .circle_content .circle_box::before {
-  content: '';
+.circle .circle_content .circle_box i {
   display: block;
   width: 60%;
   height: 30%;

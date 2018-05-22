@@ -13,7 +13,7 @@
 
 <body>
     <div class="circle">
-        <div class="circle_bg colorcircle shadow">
+        <!-- <div class="circle_bg colorcircle shadow">
             <div class="cbg_item"></div>
             <div class="cbg_item"></div>
             <div class="cbg_item"></div>
@@ -21,40 +21,40 @@
             <div class="cbg_item"></div>
             <div class="cbg_item"></div>
             <div class="centerWrap"></div>
-        </div>
+        </div> -->
         <div class="circle_content">
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
-            <span class="circle_box"></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
+            <span class="circle_box"><i></i></span>
         </div>
     </div>
     <script>
@@ -64,6 +64,9 @@
                 "-webkit-transform": "rotate(" + (11.25 * i) + "deg)",
                 "-ms-transform": "rotate(" + (11.25 * i) + "deg)",
                 "transform": "rotate(" + (11.25 * i) + "deg)"
+            });
+            $(".circle_box:eq(" + i + ") i").css({
+                "background": "hsl(" + 11.25*i + ", 90%, 50% )"
             })
         }
     </script>
