@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas进度条</title>
+    <style>
+        #myCanvas {
+            margin: 200px;
+        }
+    </style>
+</head>
+<body>
+<body>
+<canvas id="process" width="200" height="200"></canvas>
+<script>
+    (function () {
+        var c = document.getElementById('process'),
+            process = 0,
+            ctx = c.getContext('2d');
+
+        // 画灰色的圆  
+        ctx.beginPath();
+        ctx.arc(100, 100, 80, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fillStyle = '#F6F6F6';
+        ctx.fill();
+
+        function animate() {
+            requestAnimationFrame(function () {
+                process = process + 1;
+                drawCricle(ctx, process);
+                if (process < 100) {
+                    animate();
+                }
+            });
+        }
+
+        function drawCricle(ctx, percent) {
+            // 画进度环  
+            ctx.beginPath();
+            ctx.moveTo(100, 100);
+            ctx.arc(100, 100, 80, Math.PI * 1.5, Math.PI * (1.5 + 2 * percent / 100));
+            ctx.closePath();
+            ctx.fillStyle = '#FF9600';
+            ctx.fill();
+
+            // 画内填充圆  
+            ctx.beginPath();
+            ctx.arc(100, 100, 75, 0, Math.PI * 2);
+            ctx.closePath();
+            ctx.fillStyle = '#fff';
+            ctx.fill();
+
+            // 填充文字  
+            ctx.font = "bold 20pt Microsoft YaHei";
+            ctx.fillStyle = '#333';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.moveTo(100, 100);
+            ctx.fillText(process + '%', 100, 100);
+        }
+
+        animate();
+    }());
+</script>
+</body>
+
+</html>
+</body>
+</html>
