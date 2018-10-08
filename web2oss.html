@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<meta charset="UTF-8" />
+<html lang="en-US">
+<head>
+
+<script src="http://gosspublic.alicdn.com/aliyun-oss-sdk-4.4.4.min.js"></script>
+</head>
+
+<body>
+  <input type="file" id="file" />
+  <script type="text/javascript">
+    document.getElementById('file').addEventListener('change', function (e) {
+      var file = e.target.files[0];
+      var storeAs = 'img/201710/abcd12341234';
+      console.log(file.name + ' => ' + storeAs);
+	  
+      OSS.urllib.request("localhost:8889/baseprod/resource/access",
+                      {method: 'GET'}, 
+                      function (err, response) {
+          if (err) {
+            return alert(err);
+          }
+          try {
+            result = JSON.parse(response);
+          } catch (e) {
+            return alert('parse sts response info error: ' + e.message);
+          }
+          var client = new OSS.Wrapper({
+            accessKeyId: result.data.accessKeyId,
+            accessKeySecret: result.data.accessKeySecret,
+            stsToken: result.data.securityToken,
+            endpoint: 'http://oss-cn-hangzhou.aliyuncs.com',
+            bucket: 'imgrep'
+          });
+          client.multipartUpload(storeAs, file).then(function (result) {
+            console.log(result);
+          }).catch(function (err) {
+            console.log(err);
+          });
+        });
+    });
+  </script>
+</body>
+</html>
