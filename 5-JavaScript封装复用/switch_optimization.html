@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript复用-配置信息代替switch</title>
+</head>
+
+<body>
+
+</body>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+    // 模仿后台数据返回示例
+    let dataWarnConf = [{
+            warnType: 1,
+            warnCondition: 220
+        },
+        {
+            warnType: 2,
+            warnCondition: 36
+        },
+        {
+            warnType: 3,
+            warnCondition: 45
+        },
+        {
+            warnType: 4,
+            warnCondition: 110
+        },
+        {
+            warnType: 5,
+            warnCondition: 380
+        }
+    ]
+    // 根据type判断显示，（不用switch判断显示，便于修改和复用）
+    let warnConf = {
+        1: {
+            warnTypeText: '超压',
+            warnConditionText: '电压高于replacrTextV'
+        },
+        2: {
+            warnTypeText: '欠压',
+            warnConditionText: '电压低于replacrTextV'
+        },
+        3: {
+            warnTypeText: '超载',
+            warnConditionText: '电流高于replacrTextV'
+        },
+        4: {
+            warnTypeText: '电压不平衡',
+            warnConditionText: '电压不平衡replacrTextV'
+        },
+        5: {
+            warnTypeText: '电流不平衡',
+            warnConditionText: '电流不平衡replacrTextV'
+        },
+    }
+    function showWarnList(params) {
+        dataWarnConf.forEach(item => {
+            val.warnTypeText = warnConf[item.warnType].warnTypeText;
+            val.warnConditionText = warnConf[item.warnType].warnConditionText.replace('replaceText', item.warnCondition);
+        })
+    }
+</script>
+
+</html>

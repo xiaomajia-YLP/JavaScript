@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript复用-保持函数单一职责</title>
+</head>
+
+<body>
+
+</body>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+    // 模仿后台数据返回示例
+    let orderData1 = [{
+            id: 1,
+            name: '守候',
+            type: 0
+        },
+        {
+            id: 2,
+            name: '浪迹天涯',
+            type: 1
+        },
+        {
+            id: 3,
+            name: '曾经',
+            type: 2
+        }
+    ];
+    let orderData2 = [{
+            id: 1,
+            status: 0,
+            startTime: 1538323200000,
+        },
+        {
+            id: 2,
+            status: 2,
+            startTime: 1538523200000,
+        },
+        {
+            id: 3,
+            status: 1,
+            startTime: 1538723200000,
+        }
+    ];
+
+    // 根据type和time判断显示，（每个函数单一判断一个变量，减少重复代码）
+    let handleFn = {
+        setStatus(list) {
+            let _status = {
+                0: '进行中',
+                1: '已完成',
+                2: '订单异常'
+            }
+            list.forEach(item => {
+                item.status = item.status.toString() ? _status[item.status] : '';
+            })
+            return list
+        },
+        setStartTime(list) {
+            list.forEach(item => {
+                item.startTime = item.startTime.toString() ? new Date(item.startTime).toLocaleDateString().replace(
+                    /\//g, '-') : '';
+            })
+            return list;
+        },
+        setInfo(list) {
+            list.forEach(item => {
+                for (let key in item) {
+                    if (item[key] === '') {
+                        item[key] = '--';
+                    }
+                }
+            })
+            return list;
+        },
+        setType(list) {
+            let _type = {
+                0: '普通用户',
+                1: 'vip',
+                2: '超级vip'
+            }
+            list.forEach(item => {
+                item.type = item.type.toString() ? _type[item.type] : '';
+            })
+            return list;
+        }
+    }
+
+</script>
+
+</html>
