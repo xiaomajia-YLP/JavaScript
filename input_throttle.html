@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <label for="unDebounce">没有防抖/节流的input</label>
+        <input type="text" id="unDebounce" />
+        <br>
+        <br>
+        <label for="debounce">防抖后的input</label>
+        <input type="text" id="debounce" />
+        <br>
+        <br>
+        <label for="throttle">节流后的input</label>
+        <input type="text" id="throttle" />
+    </div>
+</body>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+$(function () {
+    function time() {
+        let date = new Date();
+        let h = date.getHours();
+        let m = date.getMinutes();
+        let s = date.getSeconds();
+        h = h >= 10 ? h : '0' + h;
+        m = m >= 10 ? m : '0' + m;
+        s = s >= 10 ? s : '0' + s;
+        return h + ':' + m + ':' + s;
+    }
+    // 模拟ajax请求
+    function ajax(value, time) {
+        console.log('ajax: ' + value + ';   time: ' + time);
+    }
+    // 未防抖的输入框keyup事件 --------------------------------------
+    $("#unDebounce").on('keyup', function (e) {
+        ajax(e.target.value, time());
+    })
+    // 防抖后的输入框keyup事件 -------------------------------------
+    // 在事件被触发n秒后再执行回调，如果在这n秒内又被触发，则重新计时。
+    function debounce(callback, delay) {
+        let timerId = null;
+        return function (args) {
+            let that = this;
+            clearTimeout(timerId);
+            timerId = setTimeout(function () {
+                callback.call(that, args, time());
+            }, delay);
+        }
+    }
+    let debounceAjax = debounce(ajax, 500);
+    $("#debounce").on('keyup', function (e) {
+        debounceAjax(e.target.value);
+    })
+    // 节流后的输入框keyup事件 --------------------------------------
+    // 规定在一个单位时间内，只能触发一次函数。如果这个单位时间内触发多次函数，只有一次生效。
+    function throttle(callback, delay) {
+        let last, deferId;
+        return function (args) {
+            let that = this;
+            // let now = new Date().getTime();
+            let now = +new Date();
+            if (last && now < last + delay) {
+                clearTimeout(deferId);
+                deferId = setTimeout(function () {
+                    last = now;
+                    callback.call(that, args, time());
+                }, delay);
+            } else {
+                last = now;
+                callback.call(that, args, time());
+            }
+        }
+    }
+    // function throttle(fun, delay) {
+    //     let last, deferTimer
+    //     return function (args) {
+    //         let that = this
+    //         let _args = arguments
+    //         let now = +new Date()
+    //         if (last && now < last + delay) {
+    //             clearTimeout(deferTimer)
+    //             deferTimer = setTimeout(function () {
+    //                 last = now
+    //                 fun.apply(that, _args)
+    //             }, delay)
+    //         } else {
+    //             last = now
+    //             fun.apply(that, _args)
+    //         }
+    //     }
+    // }
+    let throttleAjax = throttle(ajax, 1000);
+    $("#throttle").on('keyup', function (e) {
+        throttleAjax(e.target.value);
+    })
+})
+</script>
+
+</html>
