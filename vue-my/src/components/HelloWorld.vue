@@ -30,7 +30,7 @@ import headerBox from "./subcom/header";
 export default {
   data() {
     return {
-      selected: "1",
+      selected: "3",
       jsList: [
         {
           title: "金额千分位加逗号",
@@ -47,7 +47,13 @@ export default {
         {
           title: "计算属性",
           link: "/vue/computed"
-        }
+        },{
+          title: "事件修饰符",
+          link: "/vue/event_modifiers"
+        },{
+          title: "表单相关",
+          link: "/vue/form"
+        },
       ]
     };
   },

@@ -32,5 +32,6 @@ export default {
   color: #666;
   padding: 10px;
   background-color: #f8f8f8;
+  margin-bottom: 10px;
 }
 </style>
