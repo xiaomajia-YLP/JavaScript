@@ -41,18 +41,6 @@ export default {
 </script>
 <style lang='scss' scoped>
 .app-container {
-  .conts {
-    padding: 10px;
-  }
-  .info-title {
-    padding: 10px;
-  }
-  .info {
-    font-size: 14px;
-    color: #666;
-    padding: 10px;
-    background-color: #f8f8f8;
-  }
   .info-course {
     padding: 10px;
     font-size: 14px;

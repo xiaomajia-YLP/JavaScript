@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "App",
+  name: "App"
 };
 </script>
 
@@ -21,5 +21,16 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.conts {
+  padding: 10px;
+}
+.info-title {
+  padding: 10px;
+}
+.info {
+  font-size: 14px;
+  color: #666;
+  padding: 10px;
+  background-color: #f8f8f8;
+}
 </style>
