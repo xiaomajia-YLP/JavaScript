@@ -53,6 +53,9 @@ export default {
           title: "表单相关",
           link: "/vue/form"
         },{
+          title: "自定义组件的v-model",
+          link: "/vue/customizing"
+        },{
           title: "测试",
           link: "/vue/test"
         },

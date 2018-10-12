@@ -6,6 +6,7 @@ import formatNum from '@/components/aboutJs/formatNumber'
 import vueComputed from '@/components/aboutVue/computed'
 import eventModifiers from '@/components/aboutVue/eventModifiers'
 import form from '@/components/aboutVue/form'
+import customizingComponent from '@/components/aboutVue/customizingComponent'
 import test from '@/components/aboutVue/test'
 
 Vue.use(Router)
@@ -60,6 +61,13 @@ export default new Router({
       component: test,
       meta: {
         title: "测试"
+      }
+    }, {
+      path: '/vue/customizing',
+      name: 'customizingComponent',
+      component: customizingComponent,
+      meta: {
+        title: "自定义组件的v-model"
       }
     },
   ]
