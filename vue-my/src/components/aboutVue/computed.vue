@@ -1,7 +1,7 @@
 <template>
     <div class='app-container'>
         <!-- header -->
-        <header-box :title="'Vue计算属性'"></header-box>
+        <base-header :title="'Vue计算属性'"></base-header>
         <!-- container -->
         <div class="conts">
             <p class="info">计算属性是基于它们的依赖进行缓存的。<strong>计算属性只有在它的相关依赖发生改变时才会重新求值。</strong>这就意味着只要“依赖项”不改变，多次访问此计算属性会立即返回之前的计算结果，而不必再次执行函数。</p>
@@ -12,16 +12,12 @@
     </div>
 </template>
 <script>
-import headerBox from "../subcom/header";
 export default {
   data() {
     return {
       firstName: "",
       lastName: "",
     };
-  },
-  components: {
-    headerBox
   },
   computed: {
       fullName(){

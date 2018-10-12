@@ -1,7 +1,7 @@
 <template>
   <div class='app-container'>
     <!-- header -->
-    <header-box :title="'小马甲の中转站'"></header-box>
+    <base-header :title="'小马甲の中转站'"></base-header>
     <!-- navbar -->
     <mt-navbar v-model="selected">
       <mt-tab-item id="1">JS相关</mt-tab-item>
@@ -26,7 +26,6 @@
   </div>
 </template>
 <script>
-import headerBox from "./subcom/header";
 export default {
   data() {
     return {
@@ -53,15 +52,15 @@ export default {
         },{
           title: "表单相关",
           link: "/vue/form"
+        },{
+          title: "测试",
+          link: "/vue/test"
         },
       ]
     };
   },
   methods: {
     functionName(params) {}
-  },
-  components: {
-    headerBox
   }
 };
 </script>

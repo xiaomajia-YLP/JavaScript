@@ -1,7 +1,7 @@
 <template>
   <div class='app-container'>
     <!-- header -->
-    <header-box :title="'表单相关'"></header-box>
+    <base-header :title="'表单相关'"></base-header>
     <!-- radio -->
     <div class="conts">
       <h3>radio</h3>
@@ -92,7 +92,6 @@
   </div>
 </template>
 <script>
-import headerBox from "../subcom/header";
 export default {
   data() {
     return {
@@ -152,9 +151,6 @@ export default {
       }
     }
   },
-  components: {
-    headerBox
-  }
 };
 </script>
 <style lang='scss' scoped>

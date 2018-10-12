@@ -1,7 +1,7 @@
 <template>
   <div class='app-container'>
     <!-- header -->
-    <header-box :title="'金额千分位格式化'"></header-box>
+    <base-header :title="'金额千分位格式化'"></base-header>
     <!-- container -->
     <div class="conts">
       <mt-field label="转账金额：" placeholder="请输入转账金额" v-model="num"></mt-field>
@@ -14,7 +14,6 @@
   </div>
 </template>
 <script>
-import headerBox from "../subcom/header";
 export default {
   data() {
     return {
@@ -49,9 +48,6 @@ export default {
         this.toNum = _str;
       }
     }
-  },
-  components: {
-    headerBox
   }
 };
 </script>

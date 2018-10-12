@@ -1,7 +1,7 @@
 <template>
     <div class='app-container'>
         <!-- header -->
-        <header-box :title="'渐进式加载图片'"></header-box>
+        <base-header :title="'渐进式加载图片'"></base-header>
         <!-- container -->
         <div class="conts">
             <h3 class="info-title">方法一</h3>
@@ -32,11 +32,8 @@
     </div>
 </template>
 <script>
-import headerBox from "../subcom/header";
 export default {
-  components: {
-    headerBox
-  }
+  
 };
 </script>
 <style lang='scss' scoped>

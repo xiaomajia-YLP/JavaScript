@@ -1,7 +1,7 @@
 <template>
   <div class='app-container'>
     <!-- header -->
-    <header-box :title="'Vue计算属性'"></header-box>
+    <base-header :title="'Vue计算属性'"></base-header>
     <!-- container -->
     <div class="conts">
       <p class="info">
@@ -28,7 +28,6 @@
   </div>
 </template>
 <script>
-import headerBox from "../subcom/header";
 export default {
   data() {
     return {
@@ -49,9 +48,6 @@ export default {
       console.log('submit');
     }
   },
-  components: {
-    headerBox
-  }
 };
 </script>
 <style lang='scss' scoped>

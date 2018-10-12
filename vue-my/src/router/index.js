@@ -6,6 +6,7 @@ import formatNum from '@/components/aboutJs/formatNumber'
 import vueComputed from '@/components/aboutVue/computed'
 import eventModifiers from '@/components/aboutVue/eventModifiers'
 import form from '@/components/aboutVue/form'
+import test from '@/components/aboutVue/test'
 
 Vue.use(Router)
 
@@ -52,6 +53,13 @@ export default new Router({
       component: form,
       meta: {
         title: "表单相关"
+      }
+    }, {
+      path: '/vue/test',
+      name: 'test',
+      component: test,
+      meta: {
+        title: "测试"
       }
     },
   ]
