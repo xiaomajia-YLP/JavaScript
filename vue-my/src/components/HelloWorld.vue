@@ -58,7 +58,10 @@ export default {
         },{
           title: "测试",
           link: "/vue/test"
-        },
+        },{
+          title: "递归组件",
+          link: "/vue/recursive"
+        }
       ]
     };
   },

@@ -7,6 +7,7 @@ import vueComputed from '@/components/aboutVue/computed'
 import eventModifiers from '@/components/aboutVue/eventModifiers'
 import form from '@/components/aboutVue/form'
 import customizingComponent from '@/components/aboutVue/customizingComponent'
+import recursive from '@/components/aboutVue/recursive'
 import test from '@/components/aboutVue/test'
 
 Vue.use(Router)
@@ -68,6 +69,13 @@ export default new Router({
       component: customizingComponent,
       meta: {
         title: "自定义组件的v-model"
+      }
+    }, {
+      path: '/vue/recursive',
+      name: 'recursive',
+      component: recursive,
+      meta: {
+        title: "递归组件"
       }
     },
   ]
