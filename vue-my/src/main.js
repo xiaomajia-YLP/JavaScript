@@ -38,6 +38,7 @@ requireComponent.keys().forEach(fileName => {
 // 创建vue实例
 // 阻止启动生产消息（提示警告）
 Vue.config.productionTip = false
+Vue.config.performance = true
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

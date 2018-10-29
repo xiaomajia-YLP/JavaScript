@@ -61,6 +61,9 @@ export default {
         },{
           title: "递归组件",
           link: "/vue/recursive"
+        },{
+          title: "动态组件",
+          link: "/vue/inline-template"
         }
       ]
     };

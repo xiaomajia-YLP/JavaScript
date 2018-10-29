@@ -8,6 +8,7 @@ import eventModifiers from '@/components/aboutVue/eventModifiers'
 import form from '@/components/aboutVue/form'
 import customizingComponent from '@/components/aboutVue/customizingComponent'
 import recursive from '@/components/aboutVue/recursive'
+import inlineTemplate from '@/components/aboutVue/inlineTemplate'
 import test from '@/components/aboutVue/test'
 
 Vue.use(Router)
@@ -69,6 +70,13 @@ export default new Router({
       component: customizingComponent,
       meta: {
         title: "自定义组件的v-model"
+      }
+    }, {
+      path: '/vue/inline-template',
+      name: 'inlineTemplate',
+      component: inlineTemplate,
+      meta: {
+        title: "动态组件"
       }
     }, {
       path: '/vue/recursive',
