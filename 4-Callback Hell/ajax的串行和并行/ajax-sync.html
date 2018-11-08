@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script src="jquery.js"></script>
+        <script>
+            //串行执行分两种。    
+            //一是用同步模式async: sfalse，三个ajax请求连着写就可以了。    
+            $.ajax({    
+                url: "https://cnodejs.org/api/v1/topics?tab=good",    
+                async: false,    
+                success: function (data) {    
+                    console.log("ajax请求1 完成");    
+                }    
+            });    
+            $.ajax({    
+                url: "https://cnodejs.org/api/v1/topics?tab=job",    
+                async: false,    
+                success: function (data) {    
+                    console.log("ajax请求2 完成");    
+                }    
+            });    
+            $.ajax({    
+                url: "https://cnodejs.org/api/v1/topics?tab=share",    
+                async: false,    
+                success: function (data) {    
+                    console.log("ajax请求2 完成");    
+                }    
+            });   
+
+            //二是用异步模式async: true，三个ajax请求嵌套写。    
+            $.ajax({    
+                url: "https://cnodejs.org/api/v1/topics?tab=good",    
+                async: true,    
+                success: function (data) {    
+                    console.log("ajax请求1 完成");    
+                    $.ajax({    
+                        url: "https://cnodejs.org/api/v1/topics?tab=job",    
+                        async: true,    
+                        success: function (data) {    
+                            console.log("ajax请求2 完成");    
+                            $.ajax({    
+                                url: "https://cnodejs.org/api/v1/topics?tab=share",    
+                                async: true,    
+                                success: function (data) {    
+                                    console.log("ajax请求3 完成");    
+                                }    
+                            });    
+                        }    
+                    });    
+                }    
+            });    
+        </script>
+    </body>
+</html>

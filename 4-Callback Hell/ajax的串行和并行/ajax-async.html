@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script src="jquery.js"></script>
+        <script>
+            //并行执行就只能用异步模式。并设置变量进行计数    
+            var num = 0;    
+            function isAllSuccess() {    
+                num++;    
+                if (num>=3)    
+                    console.log("三个ajax请求全部完成");    
+            }    
+            $.ajax({    
+                url: "https://cnodejs.org/api/v1/topics?tab=good",    
+                async: true,    
+                success: function (data) {    
+                    console.log("ajax请求1 完成");    
+                    isAllSuccess();    
+                }    
+            });    
+            $.ajax({    
+                url: "https://cnodejs.org/api/v1/topics?tab=job",    
+                async: true,    
+                success: function (data) {    
+                    console.log("ajax请求3 完成");    
+                    isAllSuccess();    
+                }    
+            });    
+            $.ajax({    
+                url: "https://cnodejs.org/api/v1/topics?tab=share",    
+                async: true,    
+                success: function (data) {    
+                    console.log("ajax请求3 完成");    
+                    isAllSuccess();    
+                }    
+            });  
+                    </script>
+    </body>
+</html>
