@@ -1,0 +1,16 @@
+{
+  "name": "2-utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "1-判断设备是Android还是iOS.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "moment": "^2.22.2"
+  }
+}
