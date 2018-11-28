@@ -1,237 +1,233 @@
-const _ = require('lodash');
-const moment = require('moment');
+const _ = require('lodash')
+const moment = require('moment')
 
-// 门店订单分组整合
-let transactions = [{
-        timestamp: 1519864292535,
-        category: '餐饮',
-        price: 6.00
-    },
-    {
-        timestamp: 1519874872261,
-        category: '餐饮',
-        price: 12.00
-    },
-    {
-        timestamp: 1519899849526,
-        category: '餐饮',
-        price: 52.50
-    },
-    {
-        timestamp: 1519953249020,
-        category: '餐饮',
-        price: 4.50
-    },
-    {
-        timestamp: 1519963102270,
-        category: '餐饮',
-        price: 13.50
-    },
-    {
-        timestamp: 1519999849526,
-        category: '餐饮',
-        price: 104.25
-    }, {
-        timestamp: 1526874872261,
-        category: '餐饮',
-        price: 12.00
-    }, {
-        timestamp: 1527899849526,
-        category: '餐饮',
-        price: 52.50
-    }, {
-        timestamp: 1526553249020,
-        category: '餐饮',
-        price: 4.50
-    }, {
-        timestamp: 1522763102270,
-        category: '餐饮',
-        price: 13.50
-    }, {
-        timestamp: 1422229849526,
-        category: '餐饮',
-        price: 104.25
-    }, {
-        timestamp: 1431774872261,
-        category: '餐饮',
-        price: 12.00
-    }, {
-        timestamp: 1526699849526,
-        category: '餐饮',
-        price: 52.50
-    }, {
-        timestamp: 1501553249020,
-        category: '餐饮',
-        price: 4.50
-    }, {
-        timestamp: 1544563102270,
-        category: '餐饮',
-        price: 13.50
-    }, {
-        timestamp: 1529999849526,
-        category: '餐饮',
-        price: 104.25
-    }, {
-        timestamp: 1554374872261,
-        category: '餐饮',
-        price: 12.00
-    }, {
-        timestamp: 1566699849526,
-        category: '餐饮',
-        price: 52.50
-    }, {
-        timestamp: 1549953249020,
-        category: '餐饮',
-        price: 4.50
-    }, {
-        timestamp: 1529963102270,
-        category: '餐饮',
-        price: 13.50
-    }, {
-        timestamp: 1510999849526,
-        category: '餐饮',
-        price: 104.25
-    }, {
-        timestamp: 1527987472261,
-        category: '餐饮',
-        price: 12.00
-    }, {
-        timestamp: 1511899849526,
-        category: '餐饮',
-        price: 52.50
-    }, {
-        timestamp: 1541953249020,
-        category: '餐饮',
-        price: 4.50
-    }, {
-        timestamp: 1530963102270,
-        category: '餐饮',
-        price: 13.50
-    }, {
-        timestamp: 1561999849526,
-        category: '餐饮',
-        price: 104.25
-    }
+const arr = [{
+	timestamp: 1519864292535,
+	category: '餐饮',
+	price: 6.00,
+},
+{
+	timestamp: 1519874872261,
+	category: '餐饮',
+	price: 12.00,
+},
+{
+	timestamp: 1519899849526,
+	category: '餐饮',
+	price: 52.50,
+},
+{
+	timestamp: 1519953249020,
+	category: '餐饮',
+	price: 4.50,
+},
+{
+	timestamp: 1519963102270,
+	category: '餐饮',
+	price: 13.50,
+},
+{
+	timestamp: 1519999849526,
+	category: '餐饮',
+	price: 104.25,
+}, {
+	timestamp: 1526874872261,
+	category: '餐饮',
+	price: 12.00,
+}, {
+	timestamp: 1527899849526,
+	category: '餐饮',
+	price: 52.50,
+}, {
+	timestamp: 1526553249020,
+	category: '餐饮',
+	price: 4.50,
+}, {
+	timestamp: 1522763102270,
+	category: '餐饮',
+	price: 13.50,
+}, {
+	timestamp: 1422229849526,
+	category: '餐饮',
+	price: 104.25,
+}, {
+	timestamp: 1431774872261,
+	category: '餐饮',
+	price: 12.00,
+}, {
+	timestamp: 1526699849526,
+	category: '餐饮',
+	price: 52.50,
+}, {
+	timestamp: 1501553249020,
+	category: '餐饮',
+	price: 4.50,
+}, {
+	timestamp: 1544563102270,
+	category: '餐饮',
+	price: 13.50,
+}, {
+	timestamp: 1529999849526,
+	category: '餐饮',
+	price: 104.25,
+}, {
+	timestamp: 1554374872261,
+	category: '餐饮',
+	price: 12.00,
+}, {
+	timestamp: 1566699849526,
+	category: '餐饮',
+	price: 52.50,
+}, {
+	timestamp: 1549953249020,
+	category: '餐饮',
+	price: 4.50,
+}, {
+	timestamp: 1529963102270,
+	category: '餐饮',
+	price: 13.50,
+}, {
+	timestamp: 1510999849526,
+	category: '餐饮',
+	price: 104.25,
+}, {
+	timestamp: 1527987472261,
+	category: '餐饮',
+	price: 12.00,
+}, {
+	timestamp: 1511899849526,
+	category: '餐饮',
+	price: 52.50,
+}, {
+	timestamp: 1541953249020,
+	category: '餐饮',
+	price: 4.50,
+}, {
+	timestamp: 1530963102270,
+	category: '餐饮',
+	price: 13.50,
+}, {
+	timestamp: 1561999849526,
+	category: '餐饮',
+	price: 104.25,
+}
 ]
 
-/**
- * 将订单按一定的时间区间分组（按日分组、按周分组、按月分组、按年分组）
- * xiaomajia 2018.11.27
- * @param {*} timeSeriesArray 总的订单数组
- */
-function createTimeSeries(timeSeriesArray) {
-    const caches = {}
-    const timeSeriesObj = {
-        // properties...
-        array: timeSeriesArray.map(data => {
-            data.timestamp = new Date(data.timestamp)
-            return data
-        }),
-        // functions..
-        groupByFormat(formatPattern) {
-            if (caches[formatPattern]) {
-                return caches[formatPattern]
-            }
-            const result = _.groupBy(timeSeriesObj.array, data => {
-                return moment(data.timestamp).format(formatPattern)
-            })
-            caches[formatPattern] = result
-            return result
-        },
-        // 按天分组
-        groupByDate() {
-            const groupedResult = {
-                map: timeSeriesObj.groupByFormat('YYYY-MM-DD'),
-                dates() {
-                    return _.keys(groupedResult.map)
-                },
-                sum(date) {
-                    return _.sumBy(groupedResult.map[date], 'price')
-                }
-            }
-            return groupedResult;
-        },
-        // 按周分组
-        groupByWeek() {
-            const groupedByDate = timeSeriesObj.groupByDate()
-            const groupedResult = {
-                map: _.groupBy(groupedByDate.dates(), function (date) {
-                    return moment(date).format('YYYY-WW')
-                }),
-                weeks() {
-                    return _.keys(groupedResult.map)
-                },
-                sum(week) {
-                    const dates = groupedResult.map[week]
-                    return _.sumBy(dates, function (date) {
-                        return groupedByDate.sum(date)
-                    })
-                },
-                average(week) {
-                    const dates = groupedResult.map[week]
-                    const sum = groupedResult.sum(week)
-                    return sum / dates.length
-                }
-            }
-            return groupedResult
-        },
-        // 按月分组
-        groupByMonth() {
-            return timeSeriesObj.groupByFormat('YYYY-MM')
-        },
-        // 按年分组
-        groupByYear() {
-            return timeSeriesObj.groupByFormat('YYYY')
-        },
-        dates() {
-            return timeSeriesObj.groupByDate().dates()
-        },
-
-        weeks() {
-            return timeSeriesObj.groupByWeek().weeks()
-        },
-
-        months() {
-            return timeSeriesObj.groupByMonth().months()
-        },
-
-        years() {
-            return timeSeriesObj.groupByYear().years()
-        },
-
-        sum(unit, point) {
-            switch (unit) {
-                case 'date':
-                    return timeSeriesObj.groupByDate().sum(point)
-
-                case 'week':
-                    return timeSeriesObj.groupByWeek().sum(point)
-
-                case 'month':
-                    return timeSeriesObj.groupByMonth().sum(point)
-
-                case 'year':
-                    return timeSeriesObj.groupByYear().sum(point)
-            }
-        },
-
-        average(unit, point) {
-            switch (unit) {
-                case 'week':
-                    return timeSeriesObj.groupByWeek().average(point)
-
-                case 'month':
-                    return timeSeriesObj.groupByMonth().average(point)
-
-                case 'year':
-                    return timeSeriesObj.groupByYear().average(point)
-            }
-        }
-    }
-    return timeSeriesObj;
+const createTimeSeries = originalTimeArr => {
+	const seriesObj = {
+		arr: originalTimeArr.map(v => {
+			v.timestamp = new Date(v.timestamp)
+			return v
+		}),
+		groupByBase(pattern) {
+			return _.groupBy(seriesObj.arr, v => {
+				return moment(v.timestamp).format(pattern)
+			})
+		},
+		// 按日分组
+		groupByDate() {
+			const result = {
+				// 分组
+				grouped: seriesObj.groupByBase('YYYY-MM-DD'),
+				// 所有的日期数组
+				dates() {
+					return _.keys(result.grouped)
+				},
+				// 某一天的总收入
+				sum(d) {
+					let res = {
+						date: d,
+						count: result.grouped[d].length,
+						money: _.sumBy(result.grouped[d], 'price')
+					}
+					return res
+				},
+				// 按日分组的订单统计列表
+				allList() {
+					return _.map(result.dates(), v => result.sum(v))
+				}
+			}
+			return result
+		},
+		// 按周分组
+		groupByWeek() {
+			const result = {
+				dateGrouped: seriesObj.groupByDate().dates(),
+				grouped() {
+					return _.groupBy(result.dateGrouped, v => moment(v).format('YYYY-WW'))
+				},
+				weeks() {
+					return _.keys(result.grouped())
+				},
+				sum(d) {
+					let days = result.grouped()[d].map(v => seriesObj.groupByDate().sum(v))
+					let res = {
+						date: d,
+						count: _.sumBy(days, 'count'),
+						money: _.sumBy(days, 'money')
+					}
+					return res
+				},
+				allList() {
+					return _.map(result.weeks(), v => result.sum(v))
+				}
+			}
+			return result
+		},
+		// 按月分组
+		groupByMonth() {
+			const result = {
+				dateGrouped: seriesObj.groupByDate().dates(),
+				grouped() {
+					return _.groupBy(result.dateGrouped, v => moment(v).format('YYYY-MM'))
+				},
+				months() {
+					return _.keys(result.grouped())
+				},
+				sum(d) {
+					let days = result.grouped()[d].map(v => seriesObj.groupByDate().sum(v))
+					let res = {
+						date: d,
+						count: _.sumBy(days, 'count'),
+						money: _.sumBy(days, 'money')
+					}
+					return res
+				},
+				allList() {
+					return _.map(result.months(), v => result.sum(v))
+				}
+			}
+			return result
+		},
+		// 按年分组
+		groupByYear() {
+			const result = {
+				monthGrouped: seriesObj.groupByMonth().months(),
+				grouped() {
+					return _.groupBy(result.monthGrouped, v => moment(v).format('YYYY'))
+				},
+				years() {
+					return _.keys(result.grouped())
+				},
+				sum(d) {
+					let days = result.grouped()[d].map(v => seriesObj.groupByMonth().sum(v))
+					let res = {
+						date: d,
+						count: _.sumBy(days, 'count'),
+						money: _.sumBy(days, 'money')
+					}
+					return res
+				},
+				allList() {
+					return _.map(result.years(), v => result.sum(v))
+				}
+			}
+			return result
+		}
+	}
+	return seriesObj
 }
-
-const timeSeries = createTimeSeries(transactions)
-let date = timeSeries.groupByDate().dates()[0];
-let sum = timeSeries.groupByDate().sum(date);
-console.log(sum);
+let res = createTimeSeries(arr).groupByYear()
+console.log(res.years()) // 所有订单存在的年份
+console.log(res.sum(res.years()[0])) // 某一年的订单总计
+console.log(res.allList()) // 按年分组列表
