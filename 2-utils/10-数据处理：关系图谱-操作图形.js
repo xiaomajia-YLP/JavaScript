@@ -9,8 +9,8 @@ class Vertex {
 		this.property = property
 	}
 }
-let vertexId = 0
 
+let vertexId = 0
 /**
  * 创建定点，id自增
  * @param {*} property Vertex的属性
@@ -19,7 +19,6 @@ let vertexId = 0
 function newVertex(property) {
 	return new Vertex(++vertexId, property)
 }
-
 
 /**
  * 定义边类
