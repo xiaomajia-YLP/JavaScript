@@ -1,3 +1,4 @@
+const _ = require('lodash')
 /**
  * 定义定点类
  * xiaomajia 2018.11.29
@@ -9,8 +10,8 @@ class Vertex {
 		this.property = property
 	}
 }
-
 let vertexId = 0
+
 /**
  * 创建定点，id自增
  * @param {*} property Vertex的属性
@@ -19,6 +20,7 @@ let vertexId = 0
 function newVertex(property) {
 	return new Vertex(++vertexId, property)
 }
+
 
 /**
  * 定义边类
@@ -75,6 +77,13 @@ class Graph {
 			}
 			this.edgeRelations[edge.leftId].push(edge.id)
 			this.edgeRelations[edge.rightId].push(edge.id)
+		}
+	}
+	getVertex(vertexId){
+		if (!_.includes(this.vertices, vertexId)) {
+			return null
+		} else {
+			return this.vertices[vertexId]
 		}
 	}
 }

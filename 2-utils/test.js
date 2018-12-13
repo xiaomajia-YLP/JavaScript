@@ -1,3 +1,4 @@
+const _ = require('lodash')
 /**
  * 定义定点类
  * xiaomajia 2018.11.29
@@ -76,6 +77,13 @@ class Graph {
 			}
 			this.edgeRelations[edge.leftId].push(edge.id)
 			this.edgeRelations[edge.rightId].push(edge.id)
+		}
+	}
+	getVertex(vertexId){
+		if (!_.includes(this.vertices, vertexId)) {
+			return null
+		} else {
+			return this.vertices[vertexId]
 		}
 	}
 }
