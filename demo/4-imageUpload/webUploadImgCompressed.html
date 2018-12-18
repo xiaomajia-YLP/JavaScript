@@ -246,41 +246,41 @@
             var formdata = getFormData();
             formdata.append('imagefile', blob);
             xhr.open('post', '/cupload');
-            // xhr.onreadystatechange = function () {
-            //     if (xhr.readyState == 4 && xhr.status == 200) {
-            //         var jsonData = JSON.parse(xhr.responseText);
-            //         var imagedata = jsonData[0] || {};
-            //         var text = imagedata.path ? '上传成功' : '上传失败';
-            //         console.log(text + '：' + imagedata.path);
-            //         clearInterval(loop);
-            //         //当收到该消息时上传完毕
-            //         $li.find(".progress span").animate({ 'width': "100%" }, pecent < 95 ? 200 : 0, function () {
-            //             $(this).html(text);
-            //         });
-            //         if (!imagedata.path) return;
-            //         $(".pic-list").append('<a href="' + imagedata.path + '">' + imagedata.name + '（' + imagedata.size + '）<img src="' + imagedata.path + '" /></a>');
-            //     }
-            // };
-            // //数据发送进度，前50%展示该进度
-            // xhr.upload.addEventListener('progress', function (e) {
-            //     if (loop) return;
-            //     pecent = ~~(100 * e.loaded / e.total) / 2;
-            //     $li.find(".progress span").css('width', pecent + "%");
-            //     if (pecent == 50) {
-            //         mockProgress();
-            //     }
-            // }, false);
-            // //数据后50%用模拟进度
-            // function mockProgress() {
-            //     if (loop) return;
-            //     loop = setInterval(function () {
-            //         pecent++;
-            //         $li.find(".progress span").css('width', pecent + "%");
-            //         if (pecent == 99) {
-            //             clearInterval(loop);
-            //         }
-            //     }, 100)
-            // }
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var jsonData = JSON.parse(xhr.responseText);
+                    var imagedata = jsonData[0] || {};
+                    var text = imagedata.path ? '上传成功' : '上传失败';
+                    console.log(text + '：' + imagedata.path);
+                    clearInterval(loop);
+                    //当收到该消息时上传完毕
+                    $li.find(".progress span").animate({ 'width': "100%" }, pecent < 95 ? 200 : 0, function () {
+                        $(this).html(text);
+                    });
+                    if (!imagedata.path) return;
+                    $(".pic-list").append('<a href="' + imagedata.path + '">' + imagedata.name + '（' + imagedata.size + '）<img src="' + imagedata.path + '" /></a>');
+                }
+            };
+            //数据发送进度，前50%展示该进度
+            xhr.upload.addEventListener('progress', function (e) {
+                if (loop) return;
+                pecent = ~~(100 * e.loaded / e.total) / 2;
+                $li.find(".progress span").css('width', pecent + "%");
+                if (pecent == 50) {
+                    mockProgress();
+                }
+            }, false);
+            //数据后50%用模拟进度
+            function mockProgress() {
+                if (loop) return;
+                loop = setInterval(function () {
+                    pecent++;
+                    $li.find(".progress span").css('width', pecent + "%");
+                    if (pecent == 99) {
+                        clearInterval(loop);
+                    }
+                }, 100)
+            }
             xhr.send(formdata);
         }
         /**
